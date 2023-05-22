@@ -8,6 +8,7 @@ const SearchParams = () => {
   const breeds = [];
   return (
     <div className="search-params">
+      <h2>Search for pet</h2>
       <form>
         <label htmlFor="location">
           Location
