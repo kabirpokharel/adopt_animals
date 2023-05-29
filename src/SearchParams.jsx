@@ -2,26 +2,28 @@ import { useEffect, useState } from "react";
 // import Pet from "./Pet";
 import useBreedList from "./useBreedList";
 import Results from "./Results";
+import fetchSearch from "./fetchSearch";
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
-  const [location, setLocation] = useState("");
+  // const [location, setLocation] = useState("");
   const [animal, setAnimal] = useState("");
-  const [breed, setBreed] = useState("");
-  const [pets, setPets] = useState([]);
+  // const [breed, setBreed] = useState("");
+  // const [pets, setPets] = useState([]);
   const [breeds] = useBreedList(animal);
-  useEffect(() => {
-    requestPets();
-  }, []);
+  const [pets] = fetchSearch(animal, location, breed);
+  // useEffect(() => {
+  //   requestPets();
+  // }, []);
 
-  const requestPets = async () => {
-    const res = await fetch(
-      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
-    );
-    const json = await res.json();
-    setPets(json.pets);
-    console.log("res  = = => ", json.pets);
-  };
+  // const requestPets = async () => {
+  //   const res = await fetch(
+  //     `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+  //   );
+  //   const json = await res.json();
+  //   setPets(json.pets);
+  //   console.log("res  = = => ", json.pets);
+  // };
   return (
     <div className="search-params">
       <h2>Search for pet</h2>
